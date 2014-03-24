@@ -1,0 +1,15 @@
+<Window x:Class="Pomoika.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:core="clr-namespace:Pomoika.Core">
+
+    <Grid Background="White">
+        <TextBlock Text="Hello Caliburn Micro!"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="20" />
+        <ContentControl Name="RuleEditor">
+        </ContentControl>
+    </Grid>
+
+</Window>

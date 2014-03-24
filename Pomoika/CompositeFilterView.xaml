@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Pomoika.CompositeFilterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:micro3="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock>Name: </TextBlock>
+            <TextBlock Name="Name"></TextBlock>
+        </StackPanel>
+        <ItemsControl Name="Subfilters" Grid.Row="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate><StackPanel Orientation="Horizontal">
+                        <ContentControl micro3:View.Model="{Binding}" ></ContentControl>
+                        <Button Name="Delete" micro3:Message.Attach="Delete($this)" >Delete</Button>
+                    </StackPanel></DataTemplate>
+                
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <ComboBox x:Name="AllFilters">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+                </ComboBox>
+            <Button micro3:Message.Attach="Add(AllFilters)">Add</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
